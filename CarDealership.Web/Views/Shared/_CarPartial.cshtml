@@ -1,0 +1,19 @@
+﻿@model CarPartialViewModel
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">
+                <i class="fas fa-car fa-10x"></i>
+            </div>
+            <div class="col">
+                <h5 class="card-title">@Model.Car.Make @Model.Car.Model</h5>
+                <p class="card-text">Owned by: @Model.Customer.Name @Model.Customer.Surname</p>
+                <p class="card-text">Order date: @Model.OrderDate.ToString("D")</p>
+                <p class="card-text">Sales person: @Model.SalesPerson.Name</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+                
+    </div>
+</div>

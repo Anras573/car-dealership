@@ -1,0 +1,38 @@
+﻿@model CarDealership.Domain.ReadModels.SalesPerson
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="card">
+    <div class="card-body">
+        <div class="text-center">
+            <i class="fas fa-address-card fa-10x"></i>
+        </div>
+        <h5 class="card-title">Sales Person</h5>
+
+        <dl>
+            <dt>Name</dt>
+            <dd>@Model.Name</dd>
+            <dt>Address</dt>
+            <dd>@Model.Address</dd>
+            <dt>Title</dt>
+            <dd>@Model.JobTitle</dd>
+        </dl>
+    </div>
+</div>
+
+@if (Model.Sales.Any())
+{
+    <p>Number of cars sold: @Model.Sales.Count</p>
+    foreach (var sale in Model.Sales)
+    {
+        @Html.Partial("_CarPartial", new CarPartialViewModel
+        {
+            Car = sale.Car,
+            Customer = sale.Customer,
+            OrderDate = sale.OrderDate,
+            SalesPerson = Model
+        })
+    }
+}

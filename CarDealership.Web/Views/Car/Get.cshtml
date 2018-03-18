@@ -1,0 +1,8 @@
+﻿@model CarDealership.Domain.ReadModels.Make
+
+@Model.Name
+
+@foreach (var carModel in Model.Models)
+{
+    @carModel.Name
+}

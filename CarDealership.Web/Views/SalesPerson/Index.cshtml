@@ -1,0 +1,45 @@
+﻿@model SalesPersonViewModel
+
+@{
+    ViewData["Title"] = "Sales Persons Page";
+}
+
+<form asp-controller="SalesPerson" asp-action="Index">
+    <label asp-for="SearchTerm">Search</label>
+    <input type="text" class="form-control" asp-for="SearchTerm">
+    <small class="form-text text-muted">
+        You can search for sales persons by either name or address.
+    </small>
+</form>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var salesPerson in Model.SalesPersons)
+    {
+        <tr data-href="@Url.Action("Get", "SalesPerson", new { id = salesPerson.Id })">
+            <td><i class="fas fa-address-card"></i></td>
+            <td>@salesPerson.Name</td>
+            <td>@salesPerson.Address</td>
+            <td>@salesPerson.JobTitle</td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('*[data-href]').on('click', function() {
+            window.location = $(this).data('href');
+            return false;
+        });
+    </script>
+}
