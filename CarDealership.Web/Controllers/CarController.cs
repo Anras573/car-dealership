@@ -22,12 +22,18 @@ namespace CarDealership.Web.Controllers
             return View(makes);
         }
 
-        [HttpGet("[controller]/{id}")]
-        public IActionResult Get(Guid id)
+        public IActionResult Make(Guid id)
         {
             var query = new GetMakeQuery(id);
-            var customer = _queryProcessor.Process(query);
-            return View(customer);
+            var make = _queryProcessor.Process(query);
+            return View(make);
+        }
+
+        public IActionResult Model(Guid id)
+        {
+            var query = new GetModelQuery(id);
+            var model = _queryProcessor.Process(query);
+            return View(model);
         }
     }
 }

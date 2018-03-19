@@ -1,0 +1,6 @@
+﻿@model List<CarPartialViewModel>
+
+@foreach (var vm in Model)
+{
+    @Html.Partial("_CarPartial", vm)
+}

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Car Purchases Page";
 }
 
-<form asp-controller="Sales" asp-action="Index">
+<form asp-controller="CarPurchase" asp-action="Index">
     <div class="row">
         <div class="col">
             <label asp-for="StartDate">Start date</label>
@@ -36,7 +36,7 @@
     <tbody>
     @foreach (var sales in Model.Sales)
     {
-        <tr data-href="@Url.Action("Get", "Sales", new { id = sales.Id })">
+        <tr data-href="@Url.Action("Get", "CarPurchase", new { id = sales.Id })">
             <td><i class="fas fa-dollar-sign"></i></td>
             <td>@sales.SalesPerson.Name</td>
             <td>@sales.Customer.Name @sales.Customer.Surname</td>

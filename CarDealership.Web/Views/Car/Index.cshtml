@@ -7,7 +7,7 @@
 <div class="card-deck">
     @foreach (var make in Model)
     {
-        <a class="card-link text-dark" href="@Url.Action("Get", "Car", new {id = @make.Id})">
+        <a class="card-link text-dark" href="@Url.Action("Make", "Car", new {id = @make.Id})">
             <div class="card">
                 <div class="text-center">
                     <i class="fas fa-car fa-10x"></i>
@@ -17,6 +17,5 @@
                 </div>
             </div>
         </a>
-        
     }
 </div>

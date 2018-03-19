@@ -1,0 +1,21 @@
+﻿@model CarDealership.Domain.ReadModels.Make
+
+<h5>@Model.Name</h5>
+
+<div class="card-deck mb-3">
+    @foreach (var carModel in Model.Models)
+    {
+        <a class="card-link text-dark" href="@Url.Action("Model", "Car", new {id = @carModel.Id})">
+            <div class="card">
+                <div class="text-center">
+                    <i class="fas fa-car fa-10x"></i>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center">@carModel.Name</h5>
+                </div>
+            </div>
+        </a>
+    }
+</div>
+
+@await Component.InvokeAsync("CarPurchasesByMake", new { makeId = Model.Id })

@@ -11,9 +11,18 @@
                 <p class="card-text">Owned by: @Model.Customer.Name @Model.Customer.Surname</p>
                 <p class="card-text">Order date: @Model.OrderDate.ToString("D")</p>
                 <p class="card-text">Sales person: @Model.SalesPerson.Name</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text">Recommended price: @Model.Car.RecommendPrice - sold for: @Model.SoldFor</p>
+                @if (Model.Car.Extras.Any(o => !string.IsNullOrWhiteSpace(o)))
+                {
+                    <strong>Extras:</strong>
+                    <ul>
+                        @foreach (var extra in @Model.Car.Extras)
+                        {
+                            <li>@extra</li>
+                        }
+                    </ul>
+                }
             </div>
         </div>
-                
     </div>
 </div>

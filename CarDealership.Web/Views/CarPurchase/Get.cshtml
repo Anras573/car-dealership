@@ -4,3 +4,11 @@
     ViewData["Title"] = "Car Purchase";
 }
 
+@Html.Partial("_CarPartial", new CarPartialViewModel
+{
+    Car = Model.Car,
+    SalesPerson = Model.SalesPerson,
+    Customer = Model.Customer,
+    OrderDate = Model.OrderDate,
+    SoldFor = Model.PricePaid
+})

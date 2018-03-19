@@ -48,8 +48,8 @@ namespace CarDealership.Web.Controllers
         public IActionResult Get(Guid id)
         {
             var query = new GetCarPurchaseQuery(id);
-            var salesPerson = _queryProcessor.Process(query);
-            return View(salesPerson);
+            var purchase = _queryProcessor.Process(query);
+            return View(purchase);
         }
     }
 }
