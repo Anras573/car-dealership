@@ -36,10 +36,6 @@ namespace CarDealership.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddEntityFrameworkSqlServer()
-            //    .AddDbContext<CarDealershipContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
             services.AddMvc();
 
             IntegrateSimpleInjector(services);
@@ -103,8 +99,6 @@ namespace CarDealership.Web
 
         private void RegisterDatabaseHandlers(IApplicationBuilder app)
         {
-            //_container.CrossWire<CarDealershipContext>(app);
-
             _container.Register(() =>
             {
                 var builder = new DbContextOptionsBuilder<CarDealershipContext>();
@@ -131,11 +125,8 @@ namespace CarDealership.Web
         {
             var handlerAssembly = typeof(ICommandHandler).Assembly;
 
-            //_container.Register(typeof(IQueryHandler), new List<Assembly> { handlerAssembly }, Lifestyle.Scoped);
-
             _container.RegisterCollection<ICommandHandler>(new List<Assembly> {handlerAssembly});
-            //_container.RegisterCollection<IQueryHandler>(new List<Assembly> {handlerAssembly});
-            _container.RegisterCollection(typeof(IQueryHandler), new List<Assembly> { handlerAssembly });
+            _container.RegisterCollection<IQueryHandler>(new List<Assembly> {handlerAssembly});
 
             var handlerRegistry = _container.GetInstance<ServiceBus>();
 
