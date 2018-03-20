@@ -2,9 +2,70 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-2 mr-5 text-center">
+                <i class="fas fa-user fa-10x"></i>
+            </div>
+            <div class="col">
+                <h5 class="card-title">Customers</h5>
+                <p class="card-text">Here you can see all customers.</p>
+                <p class="card-text">It is possible to search for customers with a particular name, or an address.</p>
+                <p class="card-text">By clicking on a customer, you can see his/hers details and how many cars he/she has bought.</p>
+                @Html.ActionLink("Go to customers", "Index", "Customer", null, new {@class = "btn btn-dark"})
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-2 mr-5 text-center">
+                <i class="fas fa-address-card fa-10x"></i>
+            </div>
+            <div class="col">
+                <h5 class="card-title">Sales Persons</h5>
+                <p class="card-text">Here you can see all sales persons.</p>
+                <p class="card-text">It is possible to search for sales persons with a particular name, or an address.</p>
+                <p class="card-text">By clicking on a sales persons, you can see his/hers details and how many cars he/she has sold.</p>
+                @Html.ActionLink("Go to sales persons", "Index", "SalesPerson", null, new {@class = "btn btn-dark"})
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-2 mr-5 text-center">
+                <i class="fas fa-dollar-sign fa-10x"></i>
+            </div>
+            <div class="col">
+                <h5 class="card-title">Car Purchases</h5>
+                <p class="card-text">Here you can see all car purchases.</p>
+                <p class="card-text">It is possible to search for car purchases within a given data range.</p>
+                <p class="card-text">By clicking on a car purchase, you can see its details.</p>
+                @Html.ActionLink("Go to car purchases", "Index", "CarPurchase", null, new {@class = "btn btn-dark"})
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-2 mr-5 text-center">
+                <i class="fas fa-car fa-10x"></i>
+            </div>
+            <div class="col">
+                <h5 class="card-title">Cars</h5>
+                <p class="card-text">Here you can see all cars.</p>
+                <p class="card-text">By clicking on a car make, you can see available models, and who have bought a car of that make.</p>
+                <p class="card-text">By clicking on a car model, you can see who have bought a car of that model.</p>
+                @Html.ActionLink("Go to cars", "Index", "Car", null, new {@class = "btn btn-dark"})
+            </div>
+        </div>
     </div>
 </div>

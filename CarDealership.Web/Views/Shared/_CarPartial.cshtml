@@ -3,15 +3,21 @@
 <div class="card mb-3">
     <div class="card-body">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-lg-2 mr-5 text-center">
                 <i class="fas fa-car fa-10x"></i>
             </div>
             <div class="col">
                 <h5 class="card-title">@Model.Car.Make @Model.Car.Model</h5>
-                <p class="card-text">Owned by: @Model.Customer.Name @Model.Customer.Surname</p>
+                <p class="card-text">
+                    Owned by:
+                    @Html.ActionLink($"{Model.Customer.Name} {Model.Customer.Surname}", "Get", "Customer", new {id = Model.Customer.Id}, new {@class = "badge badge-dark"})
+                </p>
                 <p class="card-text">Order date: @Model.OrderDate.ToString("D")</p>
-                <p class="card-text">Sales person: @Model.SalesPerson.Name</p>
-                <p class="card-text">Recommended price: @Model.Car.RecommendPrice - sold for: @Model.SoldFor</p>
+                <p class="card-text">
+                    Sales person:
+                    @Html.ActionLink(Model.SalesPerson.Name, "Get", "SalesPerson", new { id = Model.SalesPerson.Id}, new {@class = "badge badge-dark"})
+                </p>
+                <p class="card-text">Recommended price: @Model.Car.RecommendPrice.ToString("C") - sold for: @Model.SoldFor.ToString("C")</p>
                 @if (Model.Car.Extras.Any(o => !string.IsNullOrWhiteSpace(o)))
                 {
                     <strong>Extras:</strong>

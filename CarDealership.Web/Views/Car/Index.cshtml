@@ -4,18 +4,20 @@
     ViewData["Title"] = "Car Page";
 }
 
-<div class="card-deck">
+<div class="row">
     @foreach (var make in Model)
     {
-        <a class="card-link text-dark" href="@Url.Action("Make", "Car", new {id = @make.Id})">
-            <div class="card">
-                <div class="text-center">
-                    <i class="fas fa-car fa-10x"></i>
+        <div class="col-lg mb-3">
+            <a class="card-link text-dark" href="@Url.Action("Make", "Car", new {id = @make.Id})">
+                <div class="card">
+                    <div class="text-center">
+                        <i class="fas fa-car fa-10x"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@make.Name</h5>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title text-center">@make.Name</h5>
-                </div>
-            </div>
-        </a>
+            </a>
+        </div>
     }
 </div>

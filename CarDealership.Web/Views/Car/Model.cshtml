@@ -1,5 +1,9 @@
 ﻿@model CarDealership.Domain.ReadModels.Model
 
+@{
+    ViewData["Title"] = Model.Name;
+}
+
 <h5>@Model.Name</h5>
 
 @await Component.InvokeAsync("CarPurchasesByModel", new { modelId = Model.Id })
