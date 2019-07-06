@@ -28,7 +28,7 @@
     <h5>Number of Cars Bought: @Model.CarPurchases.Count</h5>
     foreach (var purchase in Model.CarPurchases)
     {
-        @Html.Partial("_CarPartial", new CarPartialViewModel
+        @await Html.PartialAsync("_CarPartial", new CarPartialViewModel
         {
             Car = purchase.Car,
             Customer = Model,

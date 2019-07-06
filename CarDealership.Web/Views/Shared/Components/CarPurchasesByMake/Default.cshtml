@@ -2,5 +2,5 @@
 
 @foreach (var vm in Model)
 {
-    @Html.Partial("_CarPartial", vm)
+    @await Html.PartialAsync("_CarPartial", vm)
 }

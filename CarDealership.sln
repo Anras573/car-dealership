@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Web", "CarDealership.Web\CarDealership.Web.csproj", "{F69F8FAE-A85A-4326-B3CF-0D9687D7E83D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.Domain", "CarDealership.Domain\CarDealership.Domain.csproj", "{8E171BEC-2AD4-4E17-B195-5A20DF5927F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Domain", "CarDealership.Domain\CarDealership.Domain.csproj", "{8E171BEC-2AD4-4E17-B195-5A20DF5927F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeedData", "SeedData\SeedData.csproj", "{D1F86173-00EA-42D8-8C5D-AE80E82B6DC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeedData", "SeedData\SeedData.csproj", "{D1F86173-00EA-42D8-8C5D-AE80E82B6DC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{430F42A6-F011-4887-9650-19F124FC9C3B}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

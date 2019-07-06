@@ -12,13 +12,11 @@ using CarDealership.Domain.Framework.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SimpleInjector;
-using SimpleInjector.Integration.AspNetCore.Mvc;
 using SimpleInjector.Lifestyles;
 
 namespace CarDealership.Web
@@ -36,7 +34,14 @@ namespace CarDealership.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             IntegrateSimpleInjector(services);
         }
@@ -45,15 +50,17 @@ namespace CarDealership.Web
         {
             _container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
-            services.AddSingleton<IControllerActivator>(
-                new SimpleInjectorControllerActivator(_container));
-            services.AddSingleton<IViewComponentActivator>(
-                new SimpleInjectorViewComponentActivator(_container));
-
-            services.EnableSimpleInjectorCrossWiring(_container);
-            services.UseSimpleInjectorAspNetRequestScoping(_container);
+            services.AddSimpleInjector(_container, options =>
+            {
+                // AddAspNetCore() wraps web requests in a Simple Injector scope.
+                options.AddAspNetCore()
+                    // Ensure activation of a specific framework type to be created by
+                    // Simple Injector instead of the built-in configuration system.
+                    .AddControllerActivation()
+                    .AddViewComponentActivation()
+                    .AddPageModelActivation()
+                    .AddTagHelperActivation();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,9 +78,12 @@ namespace CarDealership.Web
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCookiePolicy();
 
             app.UseMvc(routes =>
             {
@@ -85,9 +95,6 @@ namespace CarDealership.Web
 
         private void InitializeContainer(IApplicationBuilder app)
         {
-            _container.RegisterMvcControllers(app);
-            _container.RegisterMvcViewComponents(app);
-
             RegisterDatabaseHandlers(app);
 
             _container.RegisterSingleton<ServiceBus>();
@@ -125,8 +132,8 @@ namespace CarDealership.Web
         {
             var handlerAssembly = typeof(ICommandHandler).Assembly;
 
-            _container.RegisterCollection<ICommandHandler>(new List<Assembly> {handlerAssembly});
-            _container.RegisterCollection<IQueryHandler>(new List<Assembly> {handlerAssembly});
+            _container.Collection.Register<ICommandHandler>(new List<Assembly> {handlerAssembly});
+            _container.Collection.Register<IQueryHandler>(new List<Assembly> {handlerAssembly});
 
             var handlerRegistry = _container.GetInstance<ServiceBus>();
 
