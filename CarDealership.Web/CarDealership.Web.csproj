@@ -9,7 +9,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="SimpleInjector" Version="4.6.2" />
-    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.6.1" />
+    <PackageReference Include="SimpleInjector.Integration.AspNetCore.Mvc" Version="4.6.2" />
   </ItemGroup>
 
   <ItemGroup>
