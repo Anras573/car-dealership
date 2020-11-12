@@ -14,6 +14,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docker", "Docker", "{360E481A-1988-4DF9-AC5E-21D32F450CE6}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\Docker\docker-compose.yml = Scripts\Docker\docker-compose.yml
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Presentation.Website", "Presentation\CarDealership.Presentation.Website\CarDealership.Presentation.Website.csproj", "{3706D36A-386E-4886-83F8-E8BED20044E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{DC7E35CD-309C-4AAA-92BF-31B4AF6627F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{6FC22E1C-A581-4772-829E-B5C81FD545DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Infrastructure.ElasticSearch", "Infrastructure\CarDealership.Infrastructure.ElasticSearch\CarDealership.Infrastructure.ElasticSearch.csproj", "{8E55392B-4DDB-44FC-B719-7346B2AA02E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Infrastructure.EntityFramework", "Infrastructure\CarDealership.Infrastructure.EntityFramework\CarDealership.Infrastructure.EntityFramework.csproj", "{F39D215A-BB34-4149-8019-C62DA6ECA853}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,9 +47,26 @@ Global
 		{D1F86173-00EA-42D8-8C5D-AE80E82B6DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F86173-00EA-42D8-8C5D-AE80E82B6DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F86173-00EA-42D8-8C5D-AE80E82B6DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3706D36A-386E-4886-83F8-E8BED20044E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3706D36A-386E-4886-83F8-E8BED20044E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3706D36A-386E-4886-83F8-E8BED20044E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3706D36A-386E-4886-83F8-E8BED20044E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E55392B-4DDB-44FC-B719-7346B2AA02E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E55392B-4DDB-44FC-B719-7346B2AA02E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E55392B-4DDB-44FC-B719-7346B2AA02E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E55392B-4DDB-44FC-B719-7346B2AA02E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3706D36A-386E-4886-83F8-E8BED20044E8} = {DC7E35CD-309C-4AAA-92BF-31B4AF6627F9}
+		{8E55392B-4DDB-44FC-B719-7346B2AA02E4} = {6FC22E1C-A581-4772-829E-B5C81FD545DE}
+		{F39D215A-BB34-4149-8019-C62DA6ECA853} = {6FC22E1C-A581-4772-829E-B5C81FD545DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2355DF24-498E-465D-AADC-519E01AECDE8}

@@ -1,0 +1,12 @@
+version: "3.2"
+services:
+
+  mssql-db:
+    container_name: car-dealership-mssql-db
+    image: microsoft/mssql-server-linux:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "1iGjL&24h61OvMb3R3R#nmts"
+      ACCEPT_EULA: "Y"
+        
