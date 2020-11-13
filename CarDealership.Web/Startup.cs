@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using SimpleInjector;
 using SimpleInjector.Lifestyles;
 
@@ -41,7 +42,9 @@ namespace CarDealership.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc(options => {
+                options.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             IntegrateSimpleInjector(services);
         }
@@ -64,7 +67,7 @@ namespace CarDealership.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             InitializeContainer(app);
 
@@ -72,7 +75,6 @@ namespace CarDealership.Web
 
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -95,6 +97,8 @@ namespace CarDealership.Web
 
         private void InitializeContainer(IApplicationBuilder app)
         {
+            app.UseSimpleInjector(_container);
+
             RegisterDatabaseHandlers(app);
 
             _container.RegisterSingleton<ServiceBus>();
@@ -111,7 +115,7 @@ namespace CarDealership.Web
                 var builder = new DbContextOptionsBuilder<CarDealershipContext>();
                 builder.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
                 return new CarDealershipContext(builder.Options);
-            }, Lifestyle.Transient);
+            }, Lifestyle.Singleton);
 
             var repositoryAssembly = typeof(IRepository).Assembly;
 
