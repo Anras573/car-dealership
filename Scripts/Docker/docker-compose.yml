@@ -1,0 +1,47 @@
+version: '2.2'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.9.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - cluster.name=elasticsearch-docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:7.9.0
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    networks:
+      - elastic
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+  mssql:
+    image: mcmoe/mssqldocker
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "<YourStrong!Passw0rd>"
+      MSSQL_DB: DBName
+    networks:
+      - elastic
+    ports:
+      - 1433:1433
+volumes:
+  data01:
+    driver: local
+networks:
+  elastic:
+    driver: bridge
