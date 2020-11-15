@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Infrastructur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarDealership.Infrastructure.EntityFramework", "Infrastructure\CarDealership.Infrastructure.EntityFramework\CarDealership.Infrastructure.EntityFramework.csproj", "{F39D215A-BB34-4149-8019-C62DA6ECA853}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarDealership.Infrastructure.Redis", "Infrastructure\CarDealership.Infrastructure.Redis\CarDealership.Infrastructure.Redis.csproj", "{A89B4949-DC99-4051-A608-7D53AC5787B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39D215A-BB34-4149-8019-C62DA6ECA853}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89B4949-DC99-4051-A608-7D53AC5787B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89B4949-DC99-4051-A608-7D53AC5787B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89B4949-DC99-4051-A608-7D53AC5787B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89B4949-DC99-4051-A608-7D53AC5787B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{3706D36A-386E-4886-83F8-E8BED20044E8} = {DC7E35CD-309C-4AAA-92BF-31B4AF6627F9}
 		{8E55392B-4DDB-44FC-B719-7346B2AA02E4} = {6FC22E1C-A581-4772-829E-B5C81FD545DE}
 		{F39D215A-BB34-4149-8019-C62DA6ECA853} = {6FC22E1C-A581-4772-829E-B5C81FD545DE}
+		{A89B4949-DC99-4051-A608-7D53AC5787B4} = {6FC22E1C-A581-4772-829E-B5C81FD545DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2355DF24-498E-465D-AADC-519E01AECDE8}
