@@ -17,18 +17,36 @@ services:
     ports:
       - 9200:9200
     networks:
-      - elastic
+      - car-dealership
   kibana:
     image: docker.elastic.co/kibana/kibana-oss:7.9.0
     environment:
       ELASTICSEARCH_URL: http://elasticsearch:9200
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     networks:
-      - elastic
+      - car-dealership
     ports:
       - 5601:5601
     depends_on:
       - elasticsearch
+  redis:
+    image: redis:alpine
+    ports:
+     - "6379:6379"
+    volumes:
+      - data01:/usr/share/redis/data
+    entrypoint: redis-server --appendonly yes
+    networks:
+      - car-dealership
+  insights:
+    image: redislabs/redisinsight
+    ports:
+      - "8001:8001"
+    restart: on-failure
+    depends_on:
+      - redis
+    networks:
+      - car-dealership
   mssql:
     image: mcmoe/mssqldocker
     environment:
@@ -36,12 +54,12 @@ services:
       SA_PASSWORD: "<YourStrong!Passw0rd>"
       MSSQL_DB: DBName
     networks:
-      - elastic
+      - car-dealership
     ports:
       - 1433:1433
 volumes:
   data01:
     driver: local
 networks:
-  elastic:
+  car-dealership:
     driver: bridge
